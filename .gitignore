@@ -25,5 +25,6 @@
 
 ###> docker ###
 /docker/logs/
-
+/docker/postgres/data/
+/docker/redis/data/
 ###< docker ###
