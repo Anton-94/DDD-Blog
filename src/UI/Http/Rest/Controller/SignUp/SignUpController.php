@@ -33,8 +33,8 @@ class SignUpController extends AbstractController
     #[Route('/api/test', name: 'test', methods: ['GET'])]
     public function test(Request $request): Response
     {
-
         dd($this->getUser());
+
         return new JsonResponse(' successfully');
     }
 }
