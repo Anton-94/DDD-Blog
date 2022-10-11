@@ -13,4 +13,7 @@ blog:
 	docker-compose exec php-fpm bash
 
 cs-fix:
-	docker exec -it calculator-php-fpm ./vendor/bin/php-cs-fixer fix --allow-risky=yes
+	docker exec -it blog-php-fpm ./vendor/bin/php-cs-fixer fix --allow-risky=yes
+
+psalm:
+	docker exec -it blog-php-fpm ./vendor/bin/psalm

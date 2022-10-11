@@ -9,9 +9,11 @@ services:
             POSTGRES_PASSWORD: password
             POSTGRES_DB: dbtestblog
         ports:
-            - "15432:5432"
+            - "15435:5432"
         volumes:
-            - ./docker/postgres/data:/var/lib/postgresql/data
+            - pgdata:/var/lib/postgresql/data
+            - pgconf:/etc/postgresql
+            - pglog:/var/log/postgresql
         networks:
             - blog_network
 
@@ -28,6 +30,7 @@ services:
             - PHP_IDE_CONFIG="serverName=docker-server"
         volumes:
             - ./:/var/www:rw,cached
+            - $HOME/.bash_history:/root/.bash_history
         networks:
             - blog_network
 
@@ -47,8 +50,8 @@ services:
         depends_on:
             - php-fpm
         ports:
-            - "80:80"
-            - "443:443"
+            - "88:80"
+            - "448:443"
         networks:
             - blog_network
 
@@ -67,3 +70,11 @@ services:
 
 networks:
     blog_network:
+
+volumes:
+    pgdata:
+        driver: local
+    pgconf:
+        driver: local
+    pglog:
+        driver: local

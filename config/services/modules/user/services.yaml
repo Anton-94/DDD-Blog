@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Modules\User\:
+    resource: '../../../../src/Modules/User/'
+
+  App\Modules\User\Application\Command\:
+    resource: '../../../../src/Modules/User/Application/Command/**/*CommandHandler.php'
+    tags: [ { name: messenger.message_handler, bus: messenger.bus.command } ]
