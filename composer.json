@@ -64,8 +64,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src",
-            "App\\Modules\\": "src/Modules",
+            "App\\": "src/App",
             "UI\\": "src/UI"
         }
     },

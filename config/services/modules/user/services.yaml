@@ -3,9 +3,9 @@ services:
     autowire: true
     autoconfigure: true
 
-  App\Modules\User\:
-    resource: '../../../../src/Modules/User/'
+  App\User\:
+    resource: '../../../../src/App/User/'
 
-  App\Modules\User\Application\Command\:
-    resource: '../../../../src/Modules/User/Application/Command/**/*CommandHandler.php'
+  App\User\Application\Command\:
+    resource: '../../../../src/App/User/Application/Command/**/*CommandHandler.php'
     tags: [ { name: messenger.message_handler, bus: messenger.bus.command } ]

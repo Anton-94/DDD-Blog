@@ -3,5 +3,5 @@ services:
     autowire: true
     autoconfigure: true
 
-  App\Modules\Shared\:
-    resource: '../../../../src/Modules/Shared/'
+  App\Shared\:
+    resource: '../../../../src/App/Shared/'

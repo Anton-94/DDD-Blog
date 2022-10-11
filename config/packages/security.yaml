@@ -7,7 +7,7 @@ security:
     providers:
         users_in_memory: { memory: null }
         user_by_email_provider:
-            id: App\Modules\User\Infrastructure\Security\Symfony\UserProvider\UserByEmailProvider
+            id: App\User\Infrastructure\Security\Symfony\UserProvider\UserByEmailProvider
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

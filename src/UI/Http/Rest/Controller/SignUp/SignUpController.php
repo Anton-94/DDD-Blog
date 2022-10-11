@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace UI\Http\Rest\Controller\SignUp;
 
-use App\Modules\User\Application\Command\SignUp\SignUpCommand;
+use App\User\Application\Command\SignUp\SignUpCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
