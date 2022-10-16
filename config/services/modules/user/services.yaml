@@ -5,7 +5,3 @@ services:
 
   App\User\:
     resource: '../../../../src/App/User/'
-
-  App\User\Application\Command\:
-    resource: '../../../../src/App/User/Application/Command/**/*CommandHandler.php'
-    tags: [ { name: messenger.message_handler, bus: messenger.bus.command } ]

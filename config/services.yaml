@@ -2,10 +2,20 @@ imports:
     - { resource: services/modules/shared/services.yaml }
     - { resource: services/modules/user/services.yaml }
 
+parameters:
+    redis_dsn: '%env(REDIS_DSN)%'
+
 services:
+    Symfony\Component\DependencyInjection\ContainerInterface: '@service_container'
+
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false
+
+    App\Shared\Infrastructure\Bus\Command\MessengerCommandBus:
+        arguments:
+            - '@messenger.bus.command'
 
     UI\Http\Rest\:
         resource: '../src/UI/Http/Rest/*'
@@ -14,3 +24,9 @@ services:
     UI\Http\Rest\Controller\:
         resource: '../src/UI/Http/Rest/Controller/'
         tags: ['controller.service_arguments']
+
+    Redis:
+        class: Redis
+        factory: [ 'Symfony\Component\Cache\Adapter\RedisAdapter', 'createConnection']
+        arguments:
+            - '%redis_dsn%'
