@@ -7,8 +7,8 @@ namespace App\User\Application\Command\SignUp;
 use App\Shared\Application\Command\CommandHandlerInterface;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\Shared\Infrastructure\Persistence\FlusherInterface;
-use App\User\Domain\Entity\User\Email;
-use App\User\Domain\Entity\User\User;
+use App\User\Domain\Model\User\Email;
+use App\User\Domain\Model\User\User;
 use App\User\Domain\Repository\UserRepositoryInterface;
 use App\User\Infrastructure\PasswordHasher\PasswordHasherInterface;
 

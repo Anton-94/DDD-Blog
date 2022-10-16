@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\User\Domain\Entity\User;
+namespace App\User\Domain\Model\User;
 
-use App\Shared\Domain\Entity\DatesTrait;
-use App\Shared\Domain\Entity\ExposedIdTrait;
-use App\Shared\Domain\Entity\IdTrait;
+use App\Shared\Domain\Model\DatesTrait;
+use App\Shared\Domain\Model\ExposedIdTrait;
+use App\Shared\Domain\Model\IdTrait;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Enum\RoleEnum;
 use App\User\Infrastructure\Persistence\Doctrine\UserRepository;

@@ -6,7 +6,7 @@ namespace App\User\Infrastructure\Security\Symfony;
 
 use App\Shared\Domain\ValueObject\Uuid;
 use App\Shared\Infrastructure\Exception\InfrastructureException;
-use App\User\Domain\Entity\User\User;
+use App\User\Domain\Model\User\User;
 use App\User\Infrastructure\PasswordHasher\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 

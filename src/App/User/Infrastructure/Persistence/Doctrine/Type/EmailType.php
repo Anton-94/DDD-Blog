@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Persistence\Doctrine\Type;
 
-use App\User\Domain\Entity\User\Email;
+use App\User\Domain\Model\User\Email;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 

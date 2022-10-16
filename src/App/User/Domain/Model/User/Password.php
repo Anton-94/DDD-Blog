@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\User\Domain\Entity\User;
+namespace App\User\Domain\Model\User;
 
 use App\User\Domain\Exception\PasswordIsNotValidException;
 

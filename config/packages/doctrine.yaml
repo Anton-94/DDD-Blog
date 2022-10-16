@@ -13,8 +13,8 @@ doctrine:
             User:
                 is_bundle: false
                 type: attribute
-                dir: '%kernel.project_dir%/src/App/User/Domain/Entity'
-                prefix: 'App\User\Domain\Entity'
+                dir: '%kernel.project_dir%/src/App/User/Domain/Model'
+                prefix: 'App\User\Domain\Model'
                 alias: User
 
 when@test:

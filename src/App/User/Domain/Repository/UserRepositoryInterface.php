@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Repository;
 
-use App\User\Domain\Entity\User\Email;
-use App\User\Domain\Entity\User\User;
+use App\User\Domain\Model\User\Email;
+use App\User\Domain\Model\User\User;
 
 interface UserRepositoryInterface
 {

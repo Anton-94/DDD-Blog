@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Security\Symfony\UserProvider;
 
-use App\User\Domain\Entity\User\Email;
+use App\User\Domain\Model\User\Email;
 use App\User\Domain\Repository\UserRepositoryInterface;
 use App\User\Infrastructure\Security\Symfony\AuthenticatedSymfonyUser;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
