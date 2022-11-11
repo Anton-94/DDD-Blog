@@ -1,6 +1,9 @@
 SHELL := /bin/bash
 
-# Docker commands
+##################
+### Docker compose commands
+##################
+
 up:
 	docker-compose up
 down:
@@ -8,12 +11,28 @@ down:
 build:
 	docker-compose up --build
 
-#Docker containers
+##################
+### Docker containers
+##################
+
 blog:
 	docker-compose exec php-fpm bash
+
+##################
+### Static code analysis
+##################
 
 cs-fix:
 	docker exec -it blog-php-fpm ./vendor/bin/php-cs-fixer fix --allow-risky=yes
 
 psalm:
 	docker exec -it blog-php-fpm ./vendor/bin/psalm
+
+##################
+### Database
+##################
+
+db_migrate:
+	docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
+db_diff:
+	docker-compose exec php-fpm bin/console doctrine:migrations:diff --no-interaction
