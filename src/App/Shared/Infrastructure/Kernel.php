@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Shared\Infrastructure;
 
 use App\Shared\Application\Command\CommandHandlerInterface;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
