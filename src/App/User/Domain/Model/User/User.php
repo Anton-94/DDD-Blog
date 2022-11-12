@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Model\User;
 
+use App\Shared\Domain\Model\Aggregate;
 use App\Shared\Domain\Model\DatesTrait;
 use App\Shared\Domain\Model\ExposedIdTrait;
 use App\Shared\Domain\Model\IdTrait;
@@ -14,9 +15,9 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table('user_user')]
+#[ORM\Table('users_user')]
 #[ORM\HasLifecycleCallbacks]
-class User
+class User extends Aggregate
 {
     use IdTrait;
     use ExposedIdTrait;
