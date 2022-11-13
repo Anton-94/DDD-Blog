@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Shared\Domain\Assert;
 
 use App\User\Domain\Exception\EmailIsNotValidException;
-
 use Webmozart\Assert\Assert as WebmozartAssert;
 use Webmozart\Assert\InvalidArgumentException;
 

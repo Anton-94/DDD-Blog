@@ -8,5 +8,4 @@ use App\Shared\Domain\Exception\DomainException;
 
 class UserAlreadyExistsException extends DomainException
 {
-
 }

@@ -6,8 +6,8 @@ namespace App\User\Domain\Model\User;
 
 use App\Shared\Domain\Model\Aggregate;
 use App\Shared\Domain\Model\DatesTrait;
-use App\Shared\Domain\Model\UuidTrait;
 use App\Shared\Domain\Model\IdTrait;
+use App\Shared\Domain\Model\UuidTrait;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Enum\RoleEnum;
 use App\User\Domain\Model\User\Password\HashedPassword;
