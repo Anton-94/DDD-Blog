@@ -4,13 +4,19 @@ declare(strict_types=1);
 
 namespace App\User\Domain\Model\User;
 
+use App\Shared\Domain\Assert\Assert;
+use App\User\Domain\Exception\EmailIsNotValidException;
+
 class Email
 {
     private string $value;
 
+    /**
+     * @throws EmailIsNotValidException
+     */
     public function __construct(string $email)
     {
-        /* @todo validation */
+        Assert::email($email);
         $this->value = $email;
     }
 

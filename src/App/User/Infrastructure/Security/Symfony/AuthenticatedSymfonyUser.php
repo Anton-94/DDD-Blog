@@ -34,7 +34,7 @@ class AuthenticatedSymfonyUser implements UserInterface, PasswordAuthenticatedUs
 
     public function uuid(): Uuid
     {
-        return $this->user->exposedId();
+        return $this->user->uuid();
     }
 
     public function eraseCredentials()

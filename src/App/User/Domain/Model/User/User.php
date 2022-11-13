@@ -6,10 +6,13 @@ namespace App\User\Domain\Model\User;
 
 use App\Shared\Domain\Model\Aggregate;
 use App\Shared\Domain\Model\DatesTrait;
-use App\Shared\Domain\Model\ExposedIdTrait;
+use App\Shared\Domain\Model\UuidTrait;
 use App\Shared\Domain\Model\IdTrait;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Enum\RoleEnum;
+use App\User\Domain\Model\User\Password\HashedPassword;
+use App\User\Domain\Model\User\Password\PlainPassword;
+use App\User\Domain\Service\UserPasswordHasherInterface;
 use App\User\Infrastructure\Persistence\Doctrine\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,24 +23,23 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends Aggregate
 {
     use IdTrait;
-    use ExposedIdTrait;
+    use UuidTrait;
     use DatesTrait;
 
     #[ORM\Column(type: 'user_email')]
     private Email $email;
 
-    #[ORM\Column(type: 'user_password')]
-    private Password $password;
+    #[ORM\Column(type: 'user_password', nullable: true)]
+    private ?HashedPassword $password = null;
 
     #[ORM\Column(type: 'simple_array')]
     private array $roles;
 
-    public function __construct(Uuid $uuid, Email $email, Password $password)
+    public function __construct(Uuid $uuid, Email $email)
     {
         $this->createdAt = new DateTimeImmutable();
-        $this->exposedId = $uuid;
+        $this->uuid = $uuid;
         $this->email = $email;
-        $this->password = $password;
         $this->roles = [RoleEnum::ROLE_USER->value];
     }
 
@@ -46,9 +48,14 @@ class User extends Aggregate
         return $this->email;
     }
 
-    public function password(): Password
+    public function password(): HashedPassword
     {
         return $this->password;
+    }
+
+    public function setPassword(PlainPassword $password, UserPasswordHasherInterface $passwordHasher): void
+    {
+        $this->password = $passwordHasher->hash($password, $this);
     }
 
     public function addRole(RoleEnum $role): void

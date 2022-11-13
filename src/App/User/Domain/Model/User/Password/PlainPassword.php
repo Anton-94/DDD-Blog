@@ -2,18 +2,20 @@
 
 declare(strict_types=1);
 
-namespace App\User\Domain\Model\User;
+namespace App\User\Domain\Model\User\Password;
 
 use App\User\Domain\Exception\PasswordIsNotValidException;
 
-class Password
+class PlainPassword
 {
+    public const MIN_LENGTH = 8;
+
     private string $value;
 
     /** @throws PasswordIsNotValidException */
     public function __construct(string $password)
     {
-        if (strlen($password) < 9) {
+        if (strlen($password) < self::MIN_LENGTH) {
             throw new PasswordIsNotValidException();
         }
 

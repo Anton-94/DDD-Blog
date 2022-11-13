@@ -7,21 +7,25 @@ namespace App\Shared\Infrastructure\Bus\Command;
 use App\Shared\Application\Command\CommandBusInterface;
 use App\Shared\Application\Command\CommandInterface;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
+use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Throwable;
 
 final class MessengerCommandBus implements CommandBusInterface
 {
-    public function __construct(
-        private readonly MessageBusInterface $commandBus
-    ) {
+    use HandleTrait;
+
+    public function __construct(MessageBusInterface $commandBus)
+    {
+        $this->messageBus = $commandBus;
     }
 
     /** @throws Throwable */
-    public function dispatch(CommandInterface $command): void
+    public function dispatch(CommandInterface $command): mixed
     {
         try {
-            $this->commandBus->dispatch($command);
+
+            return $this->handle($command);
         } catch (HandlerFailedException $exception) {
             $this->throwException($exception);
         }

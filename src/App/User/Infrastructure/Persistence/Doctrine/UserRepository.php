@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Persistence\Doctrine;
 
+use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Model\User\Email;
 use App\User\Domain\Model\User\User;
 use App\User\Domain\Repository\UserRepositoryInterface;
@@ -19,11 +20,17 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
 
     public function store(User $user): void
     {
-        $this->_em->persist($user);
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
     }
 
     public function findByEmail(Email $email): ?User
     {
         return $this->findOneBy(['email' => $email]);
+    }
+
+    public function findByUuid(Uuid $uuid): ?User
+    {
+        return $this->findOneBy(['uuid' => $uuid]);
     }
 }

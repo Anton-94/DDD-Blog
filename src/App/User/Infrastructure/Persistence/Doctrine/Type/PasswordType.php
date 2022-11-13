@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\User\Infrastructure\Persistence\Doctrine\Type;
 
-use App\User\Domain\Model\User\Password;
+use App\User\Domain\Model\User\Password\HashedPassword;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
@@ -17,9 +17,9 @@ class PasswordType extends StringType
         return $value->value();
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): Password
+    public function convertToPHPValue($value, AbstractPlatform $platform): HashedPassword
     {
-        return new Password($value);
+        return new HashedPassword($value);
     }
 
     public function getName(): string
