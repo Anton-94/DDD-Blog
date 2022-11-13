@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Functional\UI\Http\Rest\Controller\SignUp;
 
 use App\Tests\Functional\ControllerTestCase;
-use App\User\Domain\Model\User\Email;
 use App\User\Domain\Repository\UserRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class LogInTest extends ControllerTestCase
 {
