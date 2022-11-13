@@ -27,6 +27,6 @@ class SignUpController extends AbstractController
 
         $this->commandBus->dispatch(new SignUpCommand($email, $password));
 
-        return new JsonResponse('OK');
+        return new JsonResponse();
     }
 }

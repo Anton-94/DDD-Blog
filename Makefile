@@ -40,3 +40,10 @@ db_migrate:
 	docker-compose exec php-fpm bin/console doctrine:migrations:migrate --no-interaction
 db_diff:
 	docker-compose exec php-fpm bin/console doctrine:migrations:diff --no-interaction
+
+##################
+### Tests
+##################
+
+func:
+	docker exec -it blog-php-fpm ./vendor/bin/phpunit --configuration ./phpunit.xml --testsuite functional
