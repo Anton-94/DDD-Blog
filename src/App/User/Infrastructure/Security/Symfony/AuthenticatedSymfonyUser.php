@@ -26,6 +26,7 @@ class AuthenticatedSymfonyUser implements UserInterface, PasswordAuthenticatedUs
         return $this->user->password()->value();
     }
 
+    /** @return string[] */
     public function getRoles(): array
     {
         return $this->user->roles();
@@ -36,6 +37,9 @@ class AuthenticatedSymfonyUser implements UserInterface, PasswordAuthenticatedUs
         return $this->user->uuid();
     }
 
+    /**
+     * @psalm-suppress MissingReturnType
+     */
     public function eraseCredentials()
     {
     }

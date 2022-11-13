@@ -48,7 +48,7 @@ class User extends Aggregate
         return $this->email;
     }
 
-    public function password(): HashedPassword
+    public function password(): ?HashedPassword
     {
         return $this->password;
     }
@@ -63,6 +63,7 @@ class User extends Aggregate
         $this->roles[] = $role->value;
     }
 
+    /** @return string[] */
     public function roles(): array
     {
         return $this->roles;

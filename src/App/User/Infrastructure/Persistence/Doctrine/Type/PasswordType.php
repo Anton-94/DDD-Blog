@@ -12,11 +12,13 @@ class PasswordType extends StringType
 {
     public const NAME = 'user_password';
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    /** @param HashedPassword $value */
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): string
     {
         return $value->value();
     }
 
+    /** @param string $value */
     public function convertToPHPValue($value, AbstractPlatform $platform): HashedPassword
     {
         return new HashedPassword($value);

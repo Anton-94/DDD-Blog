@@ -22,8 +22,8 @@ class SignUpController extends AbstractController
     #[Route('/api/sign-up', name: 'sign-up', methods: ['POST'])]
     public function signUp(Request $request): Response
     {
-        $email = $request->toArray()['email'];
-        $password = $request->toArray()['password'];
+        $email = (string) $request->toArray()['email'];
+        $password = (string) $request->toArray()['password'];
 
         $this->commandBus->dispatch(new SignUpCommand($email, $password));
 
