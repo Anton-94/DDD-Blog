@@ -22,6 +22,10 @@ blog:
 ### Static code analysis
 ##################
 
+deptrac:
+	docker exec -it blog-php-fpm ./vendor/bin/deptrac analyze --config-file=deptrac-layers.yaml
+	docker exec -it blog-php-fpm ./vendor/bin/deptrac analyze --config-file=deptrac-modules.yaml
+
 cs-fix:
 	docker exec -it blog-php-fpm ./vendor/bin/php-cs-fixer fix --allow-risky=yes
 
