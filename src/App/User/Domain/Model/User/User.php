@@ -10,9 +10,11 @@ use App\Shared\Domain\Model\IdTrait;
 use App\Shared\Domain\Model\UuidTrait;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Enum\RoleEnum;
+use App\User\Domain\Exception\UserAlreadyExistsException;
 use App\User\Domain\Model\User\Password\HashedPassword;
 use App\User\Domain\Model\User\Password\PlainPassword;
 use App\User\Domain\Service\UserPasswordHasherInterface;
+use App\User\Domain\Specification\UserAlreadyExistsByEmailSpecificationInterface;
 use App\User\Infrastructure\Persistence\Doctrine\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,8 +37,12 @@ class User extends Aggregate
     #[ORM\Column(type: 'simple_array')]
     private array $roles;
 
-    public function __construct(Uuid $uuid, Email $email)
+    public function __construct(Uuid $uuid, Email $email, UserAlreadyExistsByEmailSpecificationInterface $userAlreadyExistsByEmailSpecification)
     {
+        if ($userAlreadyExistsByEmailSpecification->alreadyExists($email)) {
+            throw new UserAlreadyExistsException('User already exists by this email');
+        }
+
         $this->createdAt = new DateTimeImmutable();
         $this->uuid = $uuid;
         $this->email = $email;

@@ -29,14 +29,11 @@ final class SignUpCommandHandler implements CommandHandlerInterface
      */
     public function __invoke(SignUpCommand $command): Uuid
     {
-        $email = new Email($command->email);
-        $password = new PlainPassword($command->password);
-
-        if ($this->userRepository->findByEmail($email)) {
-            throw new UserAlreadyExistsException();
-        }
-
-        $user = $this->userFactory->create($userId = Uuid::new(), $email, $password);
+        $user = $this->userFactory->create(
+            $userId = Uuid::new(),
+            new Email($command->email),
+            new PlainPassword($command->password)
+        );
 
         $this->userRepository->store($user);
 
