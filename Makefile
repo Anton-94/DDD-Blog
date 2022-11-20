@@ -18,6 +18,9 @@ build:
 blog:
 	docker-compose exec php-fpm bash
 
+redis:
+	docker-compose exec redis bash
+
 ##################
 ### Static code analysis
 ##################

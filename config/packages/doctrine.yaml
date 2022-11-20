@@ -2,14 +2,28 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         types:
+            # Shared module
             uuid: App\Shared\Infrastructure\Persistence\Doctrine\Type\UuidType
+
+            # User module
             user_email: App\User\Infrastructure\Persistence\Doctrine\Type\EmailType
             user_password: App\User\Infrastructure\Persistence\Doctrine\Type\PasswordType
+
+            # Blog module
+            article_name: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\NameType
+            article_content: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\ContentType
+            comment_content: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\Comment\ContentType
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
+            Blog:
+                is_bundle: false
+                type: attribute
+                dir: '%kernel.project_dir%/src/App/Blog/Domain/Model'
+                prefix: 'App\Blog\Domain\Model'
+                alias: Blog
             User:
                 is_bundle: false
                 type: attribute

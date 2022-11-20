@@ -13,13 +13,13 @@ use App\User\Domain\Enum\RoleEnum;
 use App\User\Domain\Exception\UserAlreadyExistsException;
 use App\User\Domain\Model\User\Password\HashedPassword;
 use App\User\Domain\Model\User\Password\PlainPassword;
+use App\User\Domain\Repository\UserRepositoryInterface;
 use App\User\Domain\Service\UserPasswordHasherInterface;
 use App\User\Domain\Specification\UserAlreadyExistsByEmailSpecificationInterface;
-use App\User\Infrastructure\Persistence\Doctrine\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Entity(repositoryClass: UserRepositoryInterface::class)]
 #[ORM\Table('users_user')]
 #[ORM\HasLifecycleCallbacks]
 class User extends Aggregate

@@ -1,0 +1,10 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\Blog\:
+        resource: '../../../../src/App/Blog/'
+
+    App\Blog\Domain\Service\SanitizeContentInterface:
+        class: App\Blog\Infrastructure\Service\Content\Sanitize\SanitizeContent

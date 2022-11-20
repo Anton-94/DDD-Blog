@@ -1,6 +1,7 @@
 imports:
     - { resource: services/modules/shared/services.yaml }
     - { resource: services/modules/user/services.yaml }
+    - { resource: services/modules/blog/services.yaml }
 
 parameters:
     redis_dsn: '%env(REDIS_DSN)%'

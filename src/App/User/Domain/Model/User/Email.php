@@ -16,7 +16,7 @@ class Email
      */
     public function __construct(string $email)
     {
-        Assert::email($email);
+        Assert::email($email, EmailIsNotValidException::class);
         $this->value = $email;
     }
 

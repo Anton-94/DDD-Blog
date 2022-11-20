@@ -2,28 +2,24 @@
 
 declare(strict_types=1);
 
-namespace App\User\Infrastructure\Persistence\Doctrine\Type;
+namespace App\Blog\Infrastructure\Persistence\Doctrine\Type\Article;
 
-use App\User\Domain\Model\User\Email;
+use App\Blog\Domain\Model\Article\Name;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
-class EmailType extends StringType
+class NameType extends StringType
 {
-    public const NAME = 'user_email';
+    public const NAME = 'article_name';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $value->value();
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): ?Email
+    public function convertToPHPValue($value, AbstractPlatform $platform): Name
     {
-        if (!$value) {
-            return $value;
-        }
-
-        return new Email($value);
+        return new Name($value);
     }
 
     public function getName(): string
