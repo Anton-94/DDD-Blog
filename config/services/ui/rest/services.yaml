@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    UI\Http\Rest\:
+        resource: '../../../../src/UI/Http/Rest/*'
+        exclude: '../../../../src/UI/Http/Rest/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    UI\Http\Rest\Controller\:
+        resource: '../../../../src/UI/Http/Rest/Controller/'
+        tags: [ 'controller.service_arguments' ]
+
+    UI\Http\Rest\EventListener\JsonExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException}

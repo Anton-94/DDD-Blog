@@ -2,6 +2,7 @@ imports:
     - { resource: services/modules/shared/services.yaml }
     - { resource: services/modules/user/services.yaml }
     - { resource: services/modules/blog/services.yaml }
+    - { resource: services/ui/rest/services.yaml }
 
 parameters:
     redis_dsn: '%env(REDIS_DSN)%'
@@ -13,18 +14,6 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         public: false
-
-    App\Shared\Infrastructure\Bus\Command\MessengerCommandBus:
-        arguments:
-            - '@messenger.bus.command'
-
-    UI\Http\Rest\:
-        resource: '../src/UI/Http/Rest/*'
-        exclude: '../src/UI/Http/Rest/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
-
-    UI\Http\Rest\Controller\:
-        resource: '../src/UI/Http/Rest/Controller/'
-        tags: ['controller.service_arguments']
 
     Redis:
         class: Redis

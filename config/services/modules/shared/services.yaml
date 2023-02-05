@@ -9,3 +9,7 @@ services:
   App\Shared\Infrastructure\Persistence\Doctrine\EventListener\FixPostgresSQLDefaultSchemaListener:
     tags:
       - { name: doctrine.event_listener, event: postGenerateSchema }
+
+  App\Shared\Infrastructure\Bus\Command\MessengerCommandBus:
+    arguments:
+      - '@messenger.bus.command'

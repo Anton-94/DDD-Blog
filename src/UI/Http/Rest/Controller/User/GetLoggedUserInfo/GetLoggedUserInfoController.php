@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI\Http\Rest\Controller\GetLoggedUserInfo;
+namespace UI\Http\Rest\Controller\User\GetLoggedUserInfo;
 
 use App\User\Application\Fetcher\UserFetcher;
 use App\User\Infrastructure\Security\Symfony\AuthenticatedSymfonyUser;
