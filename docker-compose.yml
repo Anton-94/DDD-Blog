@@ -68,18 +68,6 @@ services:
             - blog_network
         command: ['redis-server', '--appendonly', 'yes']
 
-    redis-commander:
-        container_name: redis-commander
-        hostname: redis-commander
-        image: ghcr.io/joeferner/redis-commander:latest
-        restart: always
-        environment:
-            - REDIS_HOSTS=local:redis:6379
-        ports:
-            - "8081:8081"
-        networks:
-            - blog_network
-
 networks:
     blog_network:
 
