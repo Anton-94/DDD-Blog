@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\UI\Http\Rest\Controller\GetLoggedUserInfo;
+namespace App\Tests\Functional\UI\Http\Rest\Controller\User\GetLoggedUserInfo;
 
 use App\Tests\Functional\ControllerTestCase;
 use App\Tests\Tools\FixtureTool;

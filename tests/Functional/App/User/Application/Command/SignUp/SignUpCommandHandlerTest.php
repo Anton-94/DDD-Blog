@@ -50,7 +50,7 @@ class SignUpCommandHandlerTest extends CommandTestCase
         $user = $this->userRepository->findByUuid($userUuid);
 
         $this->assertNotNull($user);
-        $this->assertEquals($user->email()->value(), $email);
+        $this->assertEquals($email, $user->email()->value());
     }
 
     /**

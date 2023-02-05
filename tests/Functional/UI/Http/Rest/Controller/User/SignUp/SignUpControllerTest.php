@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\UI\Http\Rest\Controller\SignUp;
+namespace App\Tests\Functional\UI\Http\Rest\Controller\User\SignUp;
 
 use App\Tests\Functional\ControllerTestCase;
 use App\User\Domain\Model\User\Email;
@@ -36,7 +36,7 @@ class SignUpControllerTest extends ControllerTestCase
 
         $user = $this->userRepository->findByEmail(new Email($email));
 
-        $this->assertEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_CREATED, $response->getStatusCode());
         $this->assertNotNull($user);
         $this->assertEquals($email, $user->email()->value());
     }

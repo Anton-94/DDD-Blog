@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\UI\Http\Rest\Controller\SignUp;
+namespace App\Tests\Functional\UI\Http\Rest\Controller\User\Login;
 
 use App\Tests\Functional\ControllerTestCase;
 use App\User\Domain\Repository\UserRepositoryInterface;
@@ -10,8 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class LogInTest extends ControllerTestCase
 {
-    private ?UserRepositoryInterface $userRepository;
-
     protected function setUp(): void
     {
         parent::setUp();
