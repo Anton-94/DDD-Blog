@@ -7,13 +7,15 @@ namespace App\Blog\Application\Command\Article\CreateDraft;
 use App\Blog\Domain\Exception\ContentCannotBeEmptyException;
 use App\Blog\Domain\Exception\NameCannotBeEmptyException;
 use App\Blog\Domain\Factory\ArticleFactory;
+use App\Blog\Domain\Repository\ArticleRepositoryInterface;
 use App\Shared\Application\Command\CommandHandlerInterface;
 use App\Shared\Domain\ValueObject\Uuid;
 
 class CreateDraftCommandHandler implements CommandHandlerInterface
 {
     public function __construct(
-        private readonly ArticleFactory $articleFactory
+        private readonly ArticleFactory $articleFactory,
+        private readonly ArticleRepositoryInterface $articleRepository
     ) {
     }
 
@@ -22,12 +24,14 @@ class CreateDraftCommandHandler implements CommandHandlerInterface
      */
     public function __invoke(CreateDraftCommand $command): Uuid
     {
-        $this->articleFactory->createDraft(
+        $article = $this->articleFactory->createDraft(
             $articleId = Uuid::new(),
-            $command->name,
+            $command->title,
             $command->content,
             $command->authorId
         );
+
+        $this->articleRepository->store($article);
 
         /* @todo raise events */
 

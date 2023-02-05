@@ -8,7 +8,7 @@ use App\Blog\Domain\Exception\ContentCannotBeEmptyException;
 use App\Blog\Domain\Exception\NameCannotBeEmptyException;
 use App\Blog\Domain\Model\Article\Article;
 use App\Blog\Domain\Model\Article\Content;
-use App\Blog\Domain\Model\Article\Name;
+use App\Blog\Domain\Model\Article\Title;
 use App\Blog\Domain\Model\Author\AuthorId;
 use App\Blog\Domain\Service\SanitizeContentInterface;
 use App\Shared\Domain\ValueObject\Uuid;
@@ -23,11 +23,11 @@ class ArticleFactory
     /**
      * @throws NameCannotBeEmptyException|ContentCannotBeEmptyException
      */
-    public function createDraft(Uuid $uuid, string $name, string $content, AuthorId $authorId): Article
+    public function createDraft(Uuid $uuid, string $title, string $content, AuthorId $authorId): Article
     {
         return new Article(
             $uuid,
-            new Name($name),
+            new Title($title),
             new Content($content, $this->sanitizeContent),
             $authorId
         );

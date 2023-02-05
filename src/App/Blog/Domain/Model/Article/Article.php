@@ -28,7 +28,7 @@ class Article extends Aggregate
     use DatesTrait;
 
     #[ORM\Column(type: 'article_name')]
-    private Name $name;
+    private Title $name;
 
     #[ORM\Column(type: 'article_content')]
     private Content $content;
@@ -42,7 +42,7 @@ class Article extends Aggregate
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $comments;
 
-    public function __construct(Uuid $uuid, Name $name, Content $content, AuthorId $authorId)
+    public function __construct(Uuid $uuid, Title $name, Content $content, AuthorId $authorId)
     {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -50,9 +50,10 @@ class Article extends Aggregate
         $this->authorId = $authorId;
         $this->status = new Status(StatusEnum::DRAFT, new DateTimeImmutable());
         $this->comments = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
     }
 
-    public function name(): Name
+    public function name(): Title
     {
         return $this->name;
     }
@@ -62,7 +63,7 @@ class Article extends Aggregate
         return $this->content;
     }
 
-    public function authorId(): Uuid
+    public function authorId(): AuthorId
     {
         return $this->authorId;
     }

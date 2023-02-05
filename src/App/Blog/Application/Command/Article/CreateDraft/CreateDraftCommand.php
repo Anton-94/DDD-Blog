@@ -10,7 +10,7 @@ use App\Shared\Application\Command\CommandInterface;
 class CreateDraftCommand implements CommandInterface
 {
     public function __construct(
-        public readonly string $name,
+        public readonly string $title,
         public readonly string $content,
         public readonly AuthorId $authorId /* @todo push author here or in command handler */
     ) {

@@ -6,24 +6,29 @@ namespace App\Blog\Domain\Model\Article;
 
 use App\Blog\Domain\Exception\NameCannotBeEmptyException;
 
-class Name
+class Title
 {
     private string $value;
 
     /**
      * @throws NameCannotBeEmptyException
      */
-    public function __construct(string $name)
+    public function __construct(string $title)
     {
-        if (empty($name)) {
+        if (empty($title)) {
             throw new NameCannotBeEmptyException();
         }
 
-        $this->value = $name;
+        $this->value = $title;
     }
 
     public function value(): string
     {
         return $this->value;
+    }
+
+    public function __toString(): string
+    {
+        return $this->value();
     }
 }

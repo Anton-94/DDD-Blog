@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Blog\Infrastructure\Persistence\Doctrine\Type\Article;
 
-use App\Blog\Domain\Model\Article\Name;
+use App\Blog\Domain\Model\Article\Title;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
@@ -17,9 +17,9 @@ class NameType extends StringType
         return $value->value();
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform): Name
+    public function convertToPHPValue($value, AbstractPlatform $platform): Title
     {
-        return new Name($value);
+        return new Title($value);
     }
 
     public function getName(): string

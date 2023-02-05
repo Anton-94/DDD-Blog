@@ -6,6 +6,7 @@ namespace App\Blog\Infrastructure\Repository\Article;
 
 use App\Blog\Domain\Model\Article\Article;
 use App\Blog\Domain\Repository\ArticleRepositoryInterface;
+use App\Shared\Domain\ValueObject\Uuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,6 +21,11 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleReposi
     {
         $this->getEntityManager()->persist($article);
         $this->getEntityManager()->flush();
+    }
+
+    public function findByUuid(Uuid $uuid): ?Article
+    {
+        return $this->findOneBy(['uuid' => $uuid]);
     }
 }
 

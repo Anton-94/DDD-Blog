@@ -14,9 +14,9 @@ class Uuid implements Stringable
     ) {
     }
 
-    public static function new(): self
+    public static function new(): static
     {
-        return new self(RamseyUuid::uuid4()->toString());
+        return new static(RamseyUuid::uuid4()->toString());
     }
 
     public function value(): string
