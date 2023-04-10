@@ -7,6 +7,7 @@ namespace App\Blog\Application\Command\Article\CreateDraft;
 use App\Blog\Domain\Exception\ContentCannotBeEmptyException;
 use App\Blog\Domain\Exception\NameCannotBeEmptyException;
 use App\Blog\Domain\Factory\ArticleFactory;
+use App\Blog\Domain\Model\Author\AuthorId;
 use App\Blog\Domain\Repository\ArticleRepositoryInterface;
 use App\Shared\Application\Command\CommandHandlerInterface;
 use App\Shared\Domain\ValueObject\Uuid;
@@ -28,7 +29,7 @@ class CreateDraftCommandHandler implements CommandHandlerInterface
             $articleId = Uuid::new(),
             $command->title,
             $command->content,
-            $command->authorId
+            new AuthorId($command->authorId->value())
         );
 
         $this->articleRepository->store($article);

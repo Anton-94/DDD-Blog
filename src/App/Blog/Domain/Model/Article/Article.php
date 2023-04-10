@@ -33,7 +33,7 @@ class Article extends Aggregate
     #[ORM\Column(type: 'article_content')]
     private Content $content;
 
-    #[ORM\Column(type: 'uuid')]
+    #[ORM\Column(type: 'author_id')]
     private AuthorId $authorId;
 
     #[ORM\Embedded]
@@ -76,6 +76,11 @@ class Article extends Aggregate
     public function publish(): void
     {
         $this->status = new Status(StatusEnum::PUBLISHED, new DateTimeImmutable());
+    }
+
+    public function draft(): void
+    {
+        $this->status = new Status(StatusEnum::DRAFT, new DateTimeImmutable());
     }
 
     public function archive(): void

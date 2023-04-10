@@ -10,6 +10,7 @@ use App\Shared\Domain\Model\IdTrait;
 use App\Shared\Domain\Model\UuidTrait;
 use App\Shared\Domain\ValueObject\Uuid;
 use App\User\Domain\Enum\RoleEnum;
+use App\User\Domain\Event\UserCreated;
 use App\User\Domain\Exception\UserAlreadyExistsException;
 use App\User\Domain\Model\User\Password\HashedPassword;
 use App\User\Domain\Model\User\Password\PlainPassword;
@@ -47,6 +48,8 @@ class User extends Aggregate
         $this->uuid = $uuid;
         $this->email = $email;
         $this->roles = [RoleEnum::ROLE_USER->value];
+
+        $this->raise(new UserCreated($uuid));
     }
 
     public function email(): Email

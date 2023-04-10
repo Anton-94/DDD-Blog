@@ -34,7 +34,7 @@ class UuidType extends StringType
 
     public function getName(): string
     {
-        return self::NAME;
+        return static::NAME;
     }
 
     public function requiresSQLCommentHint(AbstractPlatform $platform): bool

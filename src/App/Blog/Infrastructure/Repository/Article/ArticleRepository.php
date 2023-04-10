@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Blog\Infrastructure\Repository\Article;
 
 use App\Blog\Domain\Model\Article\Article;
+use App\Blog\Domain\Model\Author\AuthorId;
 use App\Blog\Domain\Repository\ArticleRepositoryInterface;
 use App\Shared\Domain\ValueObject\Uuid;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -23,9 +24,20 @@ class ArticleRepository extends ServiceEntityRepository implements ArticleReposi
         $this->getEntityManager()->flush();
     }
 
+    public function save(Article $article): void
+    {
+        $this->getEntityManager()->persist($article);
+        $this->getEntityManager()->flush();
+    }
+
     public function findByUuid(Uuid $uuid): ?Article
     {
         return $this->findOneBy(['uuid' => $uuid]);
+    }
+
+    public function findByUuidAndAuthor(Uuid $uuid, AuthorId $authorId): ?Article
+    {
+        return $this->findOneBy(['uuid' => $uuid, 'authorId' => $authorId]);
     }
 }
 

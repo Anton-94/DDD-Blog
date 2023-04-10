@@ -10,6 +10,7 @@ doctrine:
             user_password: App\User\Infrastructure\Persistence\Doctrine\Type\PasswordType
 
             # Blog module
+            author_id: \App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\AuthorIdType
             article_name: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\NameType
             article_content: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\ContentType
             comment_content: App\Blog\Infrastructure\Persistence\Doctrine\Type\Article\Comment\ContentType
