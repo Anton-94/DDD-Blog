@@ -6,7 +6,7 @@ namespace UI\Http\Rest\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class AbstractApiController extends AbstractController
+abstract class AbstractApiController extends AbstractController
 {
 
 }

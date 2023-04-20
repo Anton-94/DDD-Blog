@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    UI\Front\:
+        resource: '../../../../src/UI/Front/*'
+        exclude: '../../../../src/UI/Front/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    UI\Front\Controller\:
+        resource: '../../../../src/UI/Front/Controller/'
+        tags: [ 'controller.service_arguments' ]

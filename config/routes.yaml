@@ -2,5 +2,13 @@ api:
     resource: ../src/UI/Http/Rest/Controller/
     type: attribute
 
+admin:
+    resource: ../src/UI/Admin/Controller/
+    type: attribute
+
+front:
+    resource: ../src/UI/Front/Controller/
+    type: attribute
+
 api_login_check:
     path: /api/auth/token/login

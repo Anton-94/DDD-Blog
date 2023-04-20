@@ -3,6 +3,8 @@ imports:
     - { resource: services/modules/user/services.yaml }
     - { resource: services/modules/blog/services.yaml }
     - { resource: services/ui/rest/services.yaml }
+    - { resource: services/ui/admin/services.yaml }
+    - { resource: services/ui/front/services.yaml }
 
 parameters:
     redis_dsn: '%env(REDIS_DSN)%'

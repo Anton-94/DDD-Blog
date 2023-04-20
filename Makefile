@@ -18,6 +18,9 @@ build:
 blog:
 	docker-compose exec php-fpm bash
 
+encore:
+	docker-compose exec encore bash
+
 redis:
 	docker-compose exec redis bash
 

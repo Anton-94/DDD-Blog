@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    UI\Admin\:
+        resource: '../../../../src/UI/Admin/*'
+        exclude: '../../../../src/UI/Admin/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    UI\Admin\Controller\:
+        resource: '../../../../src/UI/Admin/Controller/'
+        tags: [ 'controller.service_arguments' ]

@@ -29,7 +29,7 @@ services:
             - XDEBUG_CONFIG="remote_host=host.docker.internal remote_enable=1"
             - PHP_IDE_CONFIG="serverName=docker-server"
         volumes:
-            - ./:/var/www:rw,cached
+            - ./:/var/www
             - $HOME/.bash_history:/root/.bash_history
         networks:
             - blog_network
@@ -46,7 +46,7 @@ services:
             - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./docker/nginx/sites/:/etc/nginx/sites-available
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d
-            - ./docker/logs:/var/log/nginx
+            - ./docker/nginx/logs:/var/log/nginx
         depends_on:
             - php-fpm
         ports:
@@ -67,6 +67,17 @@ services:
         networks:
             - blog_network
         command: ['redis-server', '--appendonly', 'yes']
+
+    encore:
+        build:
+            context: ./docker/encore
+            args:
+                USER_ID: ${UID-1000}
+        volumes:
+            - ./:/var/www
+        networks:
+            - blog_network
+        tty: true
 
 networks:
     blog_network:

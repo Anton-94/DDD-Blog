@@ -1,0 +1,24 @@
+{
+  "name": "@creative-tim-official/argon-dashboard",
+  "version": "1.0.0",
+  "main": "pages/dashboard.html",
+  "directories": {
+    "example": "root"
+  },
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "devDependencies": {
+    "@symfony/stimulus-bridge": "^3.0.0",
+    "@symfony/webpack-encore": "^1.8.1",
+    "bootstrap": "^5.2.3",
+    "copy-webpack-plugin": "^10.2.4",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.0.0",
+    "webpack-notifier": "^1.6.0",
+    "core-js": "^3.30.0"
+  }
+}
