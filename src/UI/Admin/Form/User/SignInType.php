@@ -33,6 +33,7 @@ class SignInType extends AbstractType
             ])
             ->add('_remember_me', CheckboxType::class, [
                 'label' => 'Remember me',
+                'required' => false
             ])
         ;
     }

@@ -9,10 +9,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use UI\Admin\Controller\AbstractAdminController;
-use UI\Admin\Input\User\SignInInput;
 use UI\Admin\Form\User\SignInType;
 
-#[Route('/admin', name: 'admin_')]
 class SignInController extends AbstractAdminController
 {
     #[Route("/sign-in", name: 'sign_in')]

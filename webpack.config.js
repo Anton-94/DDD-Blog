@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -59,6 +60,12 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
+
+    .addPlugin(new CopyWebpackPlugin({
+        patterns: [
+            {from: './assets/admin/img/', to: "admin/images"},
+        ]
+    }))
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 

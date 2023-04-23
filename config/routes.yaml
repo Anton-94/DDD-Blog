@@ -5,6 +5,8 @@ api:
 admin:
     resource: ../src/UI/Admin/Controller/
     type: attribute
+    prefix: /admin
+    name_prefix: 'admin_'
 
 front:
     resource: ../src/UI/Front/Controller/
