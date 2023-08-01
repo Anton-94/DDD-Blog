@@ -14,7 +14,6 @@ import '@popperjs/core';
 import './js/core/popper.min.js';
 import './js/core/bootstrap.min.js';
 import './js/core/bootstrap.bundle.min.js';
-import './js/argon-dashboard.js';
 // import './js/plugins/bootstrap-notify';
 import './js/plugins/perfect-scrollbar.min';
 import './js/plugins/smooth-scrollbar.min';
